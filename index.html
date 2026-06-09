@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ishika Chaurasia · Software Engineer · AI-Powered Web Apps</title>
+<meta name="description" content="Ishika Chaurasia, software engineer building AI-powered web applications. AI/ML × full-stack. B.Tech CSE (AI & ML)." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌅</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0C0A0F;
+    --bg-2:#110D16;
+    --ink:#F4EEE9;
+    --muted:#9A93A4;
+    --faint:#6B6478;
+    --pink:#FF6FA5;
+    --coral:#FF895F;
+    --orange:#FB7E2E;
+    --line:rgba(255,255,255,.09);
+    --card:rgba(255,255,255,.025);
+    --grad:linear-gradient(100deg,var(--pink),var(--coral) 52%,var(--orange));
+    --font-display:'Bricolage Grotesque',system-ui,sans-serif;
+    --font-body:'Hanken Grotesk',system-ui,sans-serif;
+    --font-mono:'JetBrains Mono',ui-monospace,monospace;
+    --maxw:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);font-family:var(--font-body);
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  /* warm grain + glow atmosphere */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background:
+      radial-gradient(60% 50% at 78% 8%, rgba(251,126,46,.16), transparent 60%),
+      radial-gradient(55% 45% at 12% 22%, rgba(255,111,165,.16), transparent 60%),
+      radial-gradient(45% 40% at 85% 92%, rgba(255,137,95,.10), transparent 65%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .mono{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.04em}
+
+  /* ---------- NAV ---------- */
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);
+    background:rgba(12,10,15,.55);border-bottom:1px solid transparent;transition:border-color .3s}
+  header.scrolled{border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{font-family:var(--font-display);font-weight:800;font-size:1.1rem;letter-spacing:-.02em;display:flex;align-items:center;gap:.5rem}
+  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--grad)}
+  .nav-links{display:flex;align-items:center;gap:2rem}
+  .nav-links a{font-size:.92rem;color:var(--muted);transition:color .2s;position:relative}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:2px;background:var(--grad);transition:width .25s}
+  .nav-links a:hover::after{width:100%}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.92rem;
+    padding:.62rem 1.15rem;border-radius:999px;transition:transform .2s,box-shadow .25s,background .25s}
+  .btn-grad{background:var(--grad);color:#1a0d12;box-shadow:0 6px 24px -8px rgba(251,126,46,.6)}
+  .btn-grad:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(255,111,165,.7)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--coral);transform:translateY(-2px)}
+  .hamb{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+  .hamb span{width:24px;height:2px;background:var(--ink);transition:.25s}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:clamp(80px,14vh,150px) 0 90px;position:relative}
+  .pill{display:inline-flex;align-items:center;gap:.55rem;border:1px solid var(--line);
+    border-radius:999px;padding:.4rem .85rem;color:var(--muted);background:var(--card)}
+  .pill .ping{width:8px;height:8px;border-radius:50%;background:#5ee08a;box-shadow:0 0 0 0 rgba(94,224,138,.6);animation:ping 1.8s infinite}
+  @keyframes ping{0%{box-shadow:0 0 0 0 rgba(94,224,138,.5)}70%{box-shadow:0 0 0 9px rgba(94,224,138,0)}100%{box-shadow:0 0 0 0 rgba(94,224,138,0)}}
+  h1{font-family:var(--font-display);font-weight:800;letter-spacing:-.03em;line-height:1.02;
+    font-size:clamp(2.6rem,7vw,5.1rem);margin:1.4rem 0 1.1rem}
+  .hero-sub{font-size:clamp(1.05rem,2.2vw,1.35rem);color:var(--muted);max-width:620px}
+  .hero-sub b{color:var(--ink);font-weight:600}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:2.1rem}
+  .scroll-cue{margin-top:3.4rem;display:flex;align-items:center;gap:.7rem;color:var(--faint)}
+  .scroll-cue .line{width:38px;height:1px;background:var(--faint);position:relative;overflow:hidden}
+  .scroll-cue .line::after{content:"";position:absolute;inset:0;background:var(--grad);transform:translateX(-100%);animation:slide 2.2s infinite}
+  @keyframes slide{50%{transform:translateX(0)}100%{transform:translateX(100%)}}
+
+  /* ---------- TECH MARQUEE ---------- */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .track{display:flex;gap:2.6rem;width:max-content;animation:marq 26s linear infinite}
+  .marquee:hover .track{animation-play-state:paused}
+  .track span{font-family:var(--font-mono);font-size:.95rem;color:var(--muted);display:flex;align-items:center;gap:2.6rem;white-space:nowrap}
+  .track span::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--coral);opacity:.6}
+  @keyframes marq{to{transform:translateX(-50%)}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:clamp(70px,11vh,120px) 0}
+  .eyebrow{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);display:flex;align-items:center;gap:.7rem;margin-bottom:1.1rem}
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--coral)}
+  h2{font-family:var(--font-display);font-weight:700;letter-spacing:-.02em;font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.08;margin-bottom:1rem}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:3.5rem;align-items:start}
+  .about p{color:var(--muted);font-size:1.06rem;margin-bottom:1.1rem}
+  .about p b{color:var(--ink);font-weight:600}
+  .facts{border:1px solid var(--line);border-radius:18px;padding:1.5rem;background:var(--card)}
+  .facts .ava{display:flex;align-items:center;gap:1rem;margin-bottom:1.3rem}
+  .facts img{width:58px;height:58px;border-radius:50%;border:2px solid transparent;background:var(--grad);padding:2px;object-fit:cover}
+  .facts .ava b{font-family:var(--font-display);font-size:1.05rem}
+  .facts .ava span{display:block;color:var(--muted);font-size:.85rem}
+  .facts dl{display:grid;gap:.85rem}
+  .facts .row{display:flex;justify-content:space-between;gap:1rem;font-size:.92rem;border-top:1px solid var(--line);padding-top:.85rem}
+  .facts .row:first-of-type{border-top:0;padding-top:0}
+  .facts .row dt{color:var(--faint)}
+  .facts .row dd{text-align:right;font-weight:500}
+
+  /* WORK */
+  .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+  .proj{border:1px solid var(--line);border-radius:20px;padding:1.7rem;background:var(--card);
+    transition:transform .3s,border-color .3s,background .3s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+  .proj::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+  .proj:hover{transform:translateY(-5px);border-color:rgba(255,137,95,.45);background:rgba(255,255,255,.045)}
+  .proj:hover::before{transform:scaleX(1)}
+  .proj .top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.9rem}
+  .proj h3{font-family:var(--font-display);font-size:1.32rem;font-weight:700;letter-spacing:-.01em}
+  .proj .yr{font-family:var(--font-mono);font-size:.76rem;color:var(--faint);white-space:nowrap;margin-top:.3rem}
+  .proj p{color:var(--muted);font-size:.97rem;margin-bottom:1.1rem;flex:1}
+  .tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.2rem}
+  .tags span{font-family:var(--font-mono);font-size:.72rem;color:var(--coral);border:1px solid rgba(255,137,95,.3);
+    border-radius:6px;padding:.25rem .5rem;background:rgba(255,137,95,.06)}
+  .proj-links{display:flex;gap:1.3rem}
+  .proj-links a{display:inline-flex;align-items:center;gap:.4rem;font-size:.88rem;font-weight:600;color:var(--ink);transition:color .2s}
+  .proj-links a:hover{color:var(--coral)}
+  .proj-links svg{width:16px;height:16px}
+
+  /* STATS */
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:2rem}
+  .stat{border:1px solid var(--line);border-radius:18px;padding:1.6rem 1.3rem;background:var(--card);text-align:center}
+  .stat .num{font-family:var(--font-display);font-weight:800;font-size:2.3rem;line-height:1}
+  .stat .lbl{color:var(--muted);font-size:.86rem;margin-top:.5rem}
+  .lc-wrap{display:flex;justify-content:center}
+  .lc-wrap img{max-width:480px;width:100%;border-radius:14px;border:1px solid var(--line)}
+
+  /* EXPERIENCE / CERTS */
+  .exp-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:start}
+  .timeline{position:relative;padding-left:1.6rem}
+  .timeline::before{content:"";position:absolute;left:4px;top:6px;bottom:6px;width:1px;background:var(--line)}
+  .tl-item{position:relative;padding-bottom:2rem}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{content:"";position:absolute;left:-1.6rem;top:6px;width:9px;height:9px;border-radius:50%;background:var(--grad);box-shadow:0 0 0 4px var(--bg)}
+  .tl-item .role{font-family:var(--font-display);font-weight:700;font-size:1.12rem}
+  .tl-item .org{color:var(--coral);font-size:.92rem;margin:.15rem 0 .2rem}
+  .tl-item .when{font-family:var(--font-mono);font-size:.74rem;color:var(--faint)}
+  .tl-item p{color:var(--muted);font-size:.95rem;margin-top:.5rem}
+  .certs{border:1px solid var(--line);border-radius:18px;padding:1.6rem;background:var(--card)}
+  .certs h4{font-family:var(--font-display);font-size:1.05rem;margin-bottom:1.1rem;display:flex;align-items:center;gap:.5rem}
+  .certs ul{list-style:none;display:grid;gap:1rem}
+  .certs li{display:flex;gap:.8rem;font-size:.93rem}
+  .certs li .ico{color:var(--coral);flex-shrink:0;margin-top:.15rem}
+  .certs li b{display:block;font-weight:600}
+  .certs li span{color:var(--faint);font-size:.82rem}
+
+  /* CONTACT */
+  .contact{text-align:center}
+  .contact h2{font-size:clamp(2.1rem,5vw,3.4rem)}
+  .contact .lead{color:var(--muted);max-width:520px;margin:0 auto 2.4rem;font-size:1.08rem}
+  form{max-width:560px;margin:0 auto;display:grid;gap:1rem;text-align:left}
+  .field{display:grid;gap:.4rem}
+  .field label{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.06em;color:var(--muted)}
+  .field input,.field textarea{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;
+    padding:.85rem 1rem;color:var(--ink);font-family:var(--font-body);font-size:.98rem;transition:border-color .2s,box-shadow .2s}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--coral);box-shadow:0 0 0 3px rgba(255,137,95,.12)}
+  .field textarea{resize:vertical;min-height:120px}
+  form .btn-grad{justify-content:center;padding:.9rem;font-size:1rem;border:0;cursor:pointer}
+  .form-note{font-size:.85rem;color:var(--faint);min-height:1.2em;text-align:center}
+  .socials{display:flex;justify-content:center;gap:1rem;margin-top:2.6rem}
+  .socials a{width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;
+    color:var(--muted);transition:transform .2s,color .2s,border-color .2s}
+  .socials a:hover{transform:translateY(-3px);color:var(--ink);border-color:var(--coral)}
+  .socials svg{width:20px;height:20px}
+
+  footer{border-top:1px solid var(--line);padding:2.4rem 0;text-align:center;color:var(--faint);font-size:.85rem}
+  footer .mono{color:var(--faint)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    .about-grid,.work-grid,.exp-grid{grid-template-columns:1fr}
+    .stats-grid{grid-template-columns:repeat(2,1fr)}
+    .nav-links{position:fixed;inset:68px 0 auto 0;flex-direction:column;background:var(--bg-2);
+      border-bottom:1px solid var(--line);padding:1.6rem 28px;gap:1.3rem;transform:translateY(-130%);transition:transform .3s;align-items:flex-start}
+    .nav-links.open{transform:none}
+    .nav-links .btn{align-self:stretch;justify-content:center}
+    .hamb{display:flex}
+  }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#top"><span class="dot"></span>Ishika&nbsp;Chaurasia</a>
+      <div class="nav-links" id="menu">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <!-- TODO: add your résumé PDF to the repo (e.g. assets/Ishika_Resume.pdf) -->
+        <a class="btn btn-ghost" href="assets/Ishika_Resume.pdf" download>Résumé ↓</a>
+      </div>
+      <button class="hamb" id="hamb" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap">
+    <span class="pill reveal"><span class="ping"></span><span class="mono">Open to SWE / AI internships & new-grad roles</span></span>
+    <h1 class="reveal">I build <span class="grad-text">software</span> with a layer of&nbsp;<span class="grad-text">intelligence</span>.</h1>
+    <p class="hero-sub reveal">I'm <b>Ishika</b>, a software engineer focused on <b>AI-powered web applications</b>. I take ideas from model to interface: training the intelligence, engineering the experience, and shipping it end to end.</p>
+    <div class="hero-cta reveal">
+      <a class="btn btn-grad" href="#work">View my work →</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+    <div class="scroll-cue reveal"><span class="line"></span><span class="mono">scroll to explore</span></div>
+  </div>
+</section>
+
+<!-- ===================== TECH MARQUEE ===================== -->
+<div class="marquee">
+  <div class="track" id="track">
+    <span>Python<i></i></span><span>JavaScript<i></i></span><span>C++<i></i></span><span>React<i></i></span><span>Next.js<i></i></span><span>Node.js<i></i></span><span>Express<i></i></span><span>PostgreSQL<i></i></span><span>Prisma<i></i></span><span>LSTM / NLP<i></i></span><span>Streamlit<i></i></span><span>Docker<i></i></span><span>AWS<i></i></span><span>Vercel<i></i></span><span>Git<i></i></span>
+  </div>
+</div>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about" class="about">
+  <div class="wrap">
+    <p class="eyebrow reveal">About</p>
+    <div class="about-grid">
+      <div class="reveal">
+        <h2>Engineering products that think.</h2>
+        <p>I'm a <b>B.Tech CSE student specialising in AI &amp; ML</b>, and most of my work lives at the intersection of <b>software engineering and applied AI</b>: full-stack apps with real intelligence baked in, not bolted on.</p>
+        <p>My projects span <b>LSTM &amp; NLP systems</b>, real-time full-stack platforms, and background-job pipelines. I pick the right tool for the problem: <b>Python</b> for the ML, <b>React / Next.js / Node</b> for the web, <b>PostgreSQL &amp; Prisma</b> for data. Alongside that, I've solved <b>700+ DSA problems</b> to keep the fundamentals sharp.</p>
+        <p>I believe a model isn't finished until someone can actually use it, so I care as much about the interface and the deploy as I do about the accuracy.</p>
+      </div>
+      <aside class="facts reveal">
+        <div class="ava">
+          <img src="https://github.com/Ishikaa03.png" alt="Ishika Chaurasia" onerror="this.style.display='none'" />
+          <div><b>Ishika Chaurasia</b><span>SWE · AI-Powered Web Apps</span></div>
+        </div>
+        <dl>
+          <div class="row"><dt>Focus</dt><dd>SWE + Applied AI</dd></div>
+          <div class="row"><dt>Education</dt><dd>B.Tech CSE (AI&amp;ML)</dd></div>
+          <div class="row"><dt>University</dt><dd>GL Bajaj, AKTU</dd></div>
+          <div class="row"><dt>CGPA</dt><dd>8.05 / 10</dd></div>
+          <div class="row"><dt>Graduating</dt><dd>2027</dd></div>
+          <div class="row"><dt>Location</dt><dd>Delhi NCR, India</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WORK ===================== -->
+<section id="work">
+  <div class="wrap">
+    <p class="eyebrow reveal">Selected Work</p>
+    <h2 class="reveal" style="margin-bottom:2.4rem">Things I've built, end to end.</h2>
+    <div class="work-grid">
+
+      <article class="proj reveal">
+        <div class="top"><h3>SplitWise Clone</h3><span class="yr">Jun 2026</span></div>
+        <p>A full-stack expense splitter where groups split bills four ways, chat in real time, and track who owes whom. JWT cookie auth and Socket.io power live updates, with a Prisma + PostgreSQL backend deployed on Vercel + Railway.</p>
+        <div class="tags"><span>React</span><span>Node.js</span><span>Express</span><span>PostgreSQL</span><span>Prisma</span><span>Socket.io</span></div>
+        <div class="proj-links">
+          <!-- TODO: replace # with your repo + live links -->
+          <a href="https://github.com/Ishikaa03" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>Code</a>
+          <a href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>Live Demo</a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="top"><h3>Intelligent Traffic Routing</h3><span class="yr">Apr 2026</span></div>
+        <p>Predicts congestion across 20+ road segments with LSTM networks, then finds the fastest route using Dijkstra and A*, cutting modeled travel time by ~25%. Wrapped in a clean Streamlit interface.</p>
+        <div class="tags"><span>Python</span><span>LSTM</span><span>Dijkstra / A*</span><span>Streamlit</span></div>
+        <div class="proj-links">
+          <a href="https://github.com/Ishikaa03" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>Code</a>
+          <a href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>Live Demo</a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="top"><h3>AI Personal Finance Manager</h3><span class="yr">Jul 2025</span></div>
+        <p>Tracks transactions, fires budget alerts, scans receipts, and emails monthly reports via background jobs. A full-stack Next.js build with Inngest for async workflows and a CI/CD pipeline, deployed on Vercel.</p>
+        <div class="tags"><span>Next.js</span><span>React</span><span>Inngest</span><span>REST APIs</span><span>CI/CD</span></div>
+        <div class="proj-links">
+          <a href="https://github.com/Ishikaa03" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>Code</a>
+          <a href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>Live Demo</a>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="top"><h3>Job Skill Gap Analyzer</h3><span class="yr">Mar 2025</span></div>
+        <p>Compares your skills against any job description and shows exactly what to learn to qualify. NLP extracts the required skills, a Java backend handles the matching logic, and a React frontend makes it interactive.</p>
+        <div class="tags"><span>Java</span><span>Python</span><span>React</span><span>NLP</span></div>
+        <div class="proj-links">
+          <a href="https://github.com/Ishikaa03" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>Code</a>
+          <a href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg>Live Demo</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== DSA STATS ===================== -->
+<section id="stats">
+  <div class="wrap">
+    <p class="eyebrow reveal">Problem Solving</p>
+    <h2 class="reveal" style="margin-bottom:2.2rem">Fundamentals, kept sharp.</h2>
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="num grad-text">700+</div><div class="lbl">Problems solved</div></div>
+      <div class="stat reveal"><div class="num grad-text">LeetCode</div><div class="lbl">Arrays · Trees · Graphs</div></div>
+      <div class="stat reveal"><div class="num grad-text">GFG</div><div class="lbl">DP · System design</div></div>
+      <div class="stat reveal"><div class="num grad-text">CodeChef</div><div class="lbl">Contest practice</div></div>
+    </div>
+    <div class="lc-wrap reveal">
+      <a href="https://leetcode.com/u/AYWcFuZROA/" target="_blank" rel="noopener">
+        <img src="https://leetcard.jacoblin.cool/AYWcFuZROA?theme=dark&font=JetBrains%20Mono&ext=heatmap" alt="LeetCode stats" loading="lazy" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXPERIENCE / CERTS ===================== -->
+<section id="experience">
+  <div class="wrap">
+    <p class="eyebrow reveal">Experience &amp; Credentials</p>
+    <div class="exp-grid">
+      <div class="timeline reveal">
+        <div class="tl-item">
+          <div class="role">Data Operations Intern</div>
+          <div class="org">Build.Ai · Bengaluru</div>
+          <div class="when">Mar 2026 – Apr 2026</div>
+          <p>Collected and processed datasets across 10+ industries, improving data accuracy by ~20%, and turned raw industry data into analytical reports with actionable business insights.</p>
+        </div>
+        <div class="tl-item">
+          <div class="role">Community Growth Member</div>
+          <div class="org">Delhi NCR DAO · Web3</div>
+          <div class="when">Jul 2025 – Oct 2025</div>
+          <p>Organised bi-weekly meetups and produced newsletters, converting one-time attendees into an active, returning community.</p>
+        </div>
+      </div>
+      <aside class="certs reveal">
+        <h4>📜 Certifications</h4>
+        <ul>
+          <li><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><div><b>AWS Cloud Foundations</b><span>AWS Academy · compute, storage, IAM, deployment</span></div></li>
+          <li><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><div><b>AWS Solutions Architecture Simulation</b><span>Forage · scalable cloud architecture design</span></div></li>
+          <li><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><div><b>Python Essentials 1 &amp; 2</b><span>Cisco NetAcad · OOP, data structures, exceptions</span></div></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="eyebrow reveal" style="justify-content:center">Contact</p>
+    <h2 class="reveal">Let's build something intelligent.</h2>
+    <p class="lead reveal">Open to software engineering &amp; AI/ML internships and new-grad roles, or just a good conversation about building things. Drop me a line.</p>
+
+    <!-- TODO: create a free form at formspree.io and replace YOUR_FORM_ID -->
+    <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="reveal">
+      <div class="field"><label for="name">YOUR NAME</label><input id="name" name="name" type="text" required /></div>
+      <div class="field"><label for="email">EMAIL</label><input id="email" name="email" type="email" required /></div>
+      <div class="field"><label for="msg">MESSAGE</label><textarea id="msg" name="message" required></textarea></div>
+      <button class="btn btn-grad" type="submit">Send message →</button>
+      <p class="form-note" id="formNote"></p>
+    </form>
+
+    <div class="socials reveal">
+      <a href="https://github.com/Ishikaa03" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.5v-1.8c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></a>
+      <a href="https://www.linkedin.com/in/ishikaa-chaurasia/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.74v20.5C0 23.2.8 24 1.77 24h20.45C23.2 24 24 23.2 24 22.23V1.74C24 .78 23.2 0 22.22 0z"/></svg></a>
+      <a href="mailto:ishikachaurasia374@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="mono">Designed &amp; built by Ishika Chaurasia · © <span id="yr"></span></p>
+  </div>
+</footer>
+
+<script>
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // nav shadow on scroll
+  const header = document.querySelector('header');
+  addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 10));
+
+  // mobile menu
+  const hamb = document.getElementById('hamb'), menu = document.getElementById('menu');
+  hamb.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // duplicate marquee content for a seamless loop
+  const track = document.getElementById('track');
+  track.innerHTML += track.innerHTML;
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { e.target.style.transitionDelay = (i % 4) * 70 + 'ms'; e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // contact form -> Formspree (AJAX so the page doesn't redirect)
+  const form = document.getElementById('contactForm'), note = document.getElementById('formNote');
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    if (form.action.includes('YOUR_FORM_ID')) {
+      note.textContent = '⚠ Add your Formspree form ID to enable sending.';
+      note.style.color = 'var(--coral)'; return;
+    }
+    note.style.color = 'var(--muted)'; note.textContent = 'Sending…';
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      if (res.ok) { form.reset(); note.style.color = '#5ee08a'; note.textContent = '✓ Thanks! I\'ll get back to you soon.'; }
+      else { note.style.color = 'var(--coral)'; note.textContent = 'Something went wrong, try emailing me directly.'; }
+    } catch { note.style.color = 'var(--coral)'; note.textContent = 'Network error. Try emailing me directly.'; }
+  });
+</script>
+</body>
+</html>
